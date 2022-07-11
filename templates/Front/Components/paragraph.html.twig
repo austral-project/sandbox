@@ -1,0 +1,18 @@
+{% set component = (component|default({}))|merge({
+  name : "components-paragraph"
+}) %}
+{% extends "Front/Components/Base/component-skeleton.html.twig" %}
+
+{% block content %}
+  <div class="width-container margin-auto">
+    <div class="grid">
+      <div class="row">
+        <div class="col col--xs-12">
+          <div class="content-text {{ component.values.text.isWysiwyg ? "wysiwyg" : "" }}">
+            {{ component.values.text.value|raw() }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

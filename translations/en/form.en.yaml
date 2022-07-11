@@ -1,0 +1,108 @@
+choices:
+  severity:
+    low:                            Low
+    medium:                         Medium
+    serious:                        Serious
+  bugBype:
+    anomaly:                        Anomaly
+    evolution:                      Evolution
+  status:
+    create:                         Create
+    waiting_support:                Waiting Support
+    waiting_client:                 Waiting Client
+    in_progress:                    In progress
+    executed:                       Executed
+    close:                          Close
+    cancel:                         Cancel
+    impossible:                     Impossible
+    error:                          Error
+
+bug:
+  success:                          The bug has save successfully
+  fields:
+    title:
+      label:                        Title
+      errors:
+        notNull:                    The title is required
+    description:
+      label:                        Description
+      errors:
+        notNull:                    The description is required
+    date:
+      label:                        Date
+    project:
+      label:                        Project
+    user:
+      label:                        Creator
+    isTma:
+      label:                        TMA ?
+    type:
+      label:                        Bug type
+    severity:
+      label:                        Severity
+      errors:
+        notNull:                    The severity is required
+    status:
+      label:                        Status
+
+project:
+  success:                          The project has save successfully
+  fields:
+    name:
+      label:                        Name
+      errors:
+        notNull:                    The name is required
+    slug:
+      label:                        Slug
+    image:
+      label:                        Image
+    description:
+      label:                        Description
+      errors:
+        notNull:                    The description is required
+    date:
+      label:                        Date
+      errors:
+        notNull:                    The date is required
+    client:
+      label:                        Client
+    url:
+      label:                        Url
+
+
+client:
+  success:                          The client has save successfully
+  fields:
+    name:
+      label:                        Name
+      errors:
+        notNull:                    The name is required
+    image:
+      label:                        Logo
+
+
+user:
+  success:                          The user has save successfully
+  fields:
+    lastname:
+      label:                        Lastname
+      errors:
+        notNull:                    The lastname is required
+    firstname:
+      label:                        Firstname
+      errors:
+        notNull:                    The firstname is required
+    email:
+      label:                        Email
+      errors:
+        notNull:                    The email is required
+        valid:                      This value is not a valid email address
+    password:
+      first:
+        label:                      Password
+      second:
+        label:                      Repeat
+    role:
+      label:                        Role
+    image:
+      label:                        Avatar

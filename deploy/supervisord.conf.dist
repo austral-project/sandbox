@@ -1,0 +1,33 @@
+[supervisord]
+nodaemon=true
+
+[program:services-status]
+command=/usr/bin/php /home/www-data/website/bin/console austral:tools:status-checker -s
+user=www-data
+startsecs=0
+autostart=true
+autorestart=true
+process_name=%(program_name)s_%(process_num)02d
+stdout_logfile  = /home/www-data/website/var/docker-log/php-cli/status-checker.log
+stderr_logfile  = /home/www-data/website/var/docker-log/php-cli/status-checker.err
+
+[program:conflict-detect]
+command=/usr/bin/php /home/www-data/website/bin/console austral:admin:conflict-detect -s
+user=www-data
+startsecs=0
+autostart=true
+autorestart=true
+process_name=%(program_name)s_%(process_num)02d
+stdout_logfile  = /home/www-data/website/var/docker-log/php-cli/conflict-detect.log
+stderr_logfile  = /home/www-data/website/var/docker-log/php-cli/conflict-detect.err
+
+[program:messenger]
+command=/usr/bin/php /home/www-data/website/bin/console messenger:consume async
+user=www-data
+numprocs=1
+startsecs=0
+autostart=true
+autorestart=true
+process_name=%(program_name)s_%(process_num)02d
+stdout_logfile  = /home/www-data/website/var/docker-log/php-cli/messenger.log
+stderr_logfile  = /home/www-data/website/var/docker-log/php-cli/messenger.err

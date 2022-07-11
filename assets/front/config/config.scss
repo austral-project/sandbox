@@ -1,0 +1,21 @@
+$containerMaxWith: 124rem;
+$containerPadding: 0 2rem;
+
+$navigationWidth: 8rem;
+$headerHeight: 8rem;
+
+$base-font: 12;
+// Grid breakpoints
+$breakpoints-xsm-number: 320;
+$breakpoints-sm-number: 544;
+$breakpoints-md-number: 768;
+$breakpoints-lg-number: 992;
+$breakpoints-xl-number: 1200;
+$breakpoints-xxl-number: 1900;
+
+$breakpoints-xsm: #{$breakpoints-xsm-number}px;
+$breakpoints-sm: #{$breakpoints-sm-number}px;
+$breakpoints-md: #{$breakpoints-md-number}px;
+$breakpoints-lg: #{$breakpoints-lg-number}px;
+$breakpoints-xl: #{$breakpoints-xl-number}px;
+$breakpoints-xxl: #{$breakpoints-xxl-number}px;

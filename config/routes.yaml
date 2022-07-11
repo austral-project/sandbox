@@ -1,0 +1,24 @@
+austral_file:
+  resource: '@AustralEntityFileBundle/Resources/config/routes.yaml'
+  prefix:   /
+
+austral_admin:
+  resource: '@AustralAdminBundle/Resources/config/routes/admin.yaml'
+  prefix:   /austral-admin
+
+austral_email:
+  resource: '@AustralEmailBundle/Resources/config/routes.yaml'
+  prefix:   /email
+
+austral_security:
+  resource: '@AustralSecurityBundle/Resources/config/routes.yaml'
+  prefix:   /
+
+##### Homepage
+app_website:
+  resource:           'routes/front.yaml'
+  prefix:             /
+
+austral_website:
+  resource:           '@AustralWebsiteBundle/Resources/config/routes/website.yaml'
+  prefix:             /

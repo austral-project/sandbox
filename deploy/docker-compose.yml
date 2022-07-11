@@ -1,0 +1,95 @@
+version: "3"
+
+services:
+
+  nginx:
+    container_name:               ${COMPOSE_PROJECT_NAME}-nginx
+    image:                        australproject/nginx:1.20
+    restart:                      unless-stopped
+    ports:
+      - "8088:80"
+    depends_on:
+      - php
+    volumes:
+      - "./../:/home/www-data/website"
+    environment:
+      TZ:                         ${TZ}
+      APP_DEBUG:                  ${APP_DEBUG}
+      APP_ENV:                    ${APP_ENV}
+      PUBLIC_DIR:                 ${PUBLIC_DIR}
+    links:
+      - php
+
+  php:
+    container_name:               ${COMPOSE_PROJECT_NAME}-php
+    image:                        australproject/php:8.0
+    restart:                      unless-stopped
+    depends_on:
+      - pgsql-database
+      - mercure
+    volumes:
+      - "./../:/home/www-data/website"
+      - "./../var/docker-log/php:/var/log"
+    environment:
+      TZ:                         ${TZ}
+      APP_ENV:                    ${APP_ENV}
+      APP_DEBUG:                  ${APP_DEBUG}
+      XDEBUG:                     ${XDEBUG}
+      MERCURE_PUBLISHER_JWT_KEY:  "${MERCURE_PUBLISHER_JWT_KEY}"
+      MERCURE_SUBSCRIBER_JWT_KEY: "${MERCURE_SUBSCRIBER_JWT_KEY}"
+    links:
+      - pgsql-database
+      - mercure
+
+  php-cli:
+    container_name:               ${COMPOSE_PROJECT_NAME}-php-cli
+    image:                        australproject/php-supervisor:8.0
+    restart:                      unless-stopped
+    depends_on:
+      - pgsql-database
+      - mercure
+    volumes:
+      - "./../:/home/www-data/website"
+      - "./supervisord.conf:/home/www-data/supervisord.conf"
+      - "./../var/docker-log/php-cli:/var/log"
+    environment:
+      TZ:                         ${TZ}
+      APP_ENV:                    ${APP_ENV}
+      APP_DEBUG:                  ${APP_DEBUG}
+      XDEBUG:                     ${XDEBUG}
+      MERCURE_PUBLISHER_JWT_KEY:  "${MERCURE_PUBLISHER_JWT_KEY}"
+      MERCURE_SUBSCRIBER_JWT_KEY: "${MERCURE_SUBSCRIBER_JWT_KEY}"
+    links:
+      - pgsql-database
+      - mercure
+
+  pgsql-database:
+    container_name:               ${COMPOSE_PROJECT_NAME}-pgsql-database
+    image:                        postgres:14.2-alpine
+    restart:                      unless-stopped
+    volumes:
+      - austral-sandbox_pgsql-database:/var/lib/postgresql/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      POSTGRES_PASSWORD:          "${POSTGRESQL_PASSWORD}"
+
+  mercure:
+    image:                        dunglas/mercure
+    container_name:               ${COMPOSE_PROJECT_NAME}-mercure
+    restart:                      always
+    command:                      /usr/bin/caddy run -config /etc/caddy/Caddyfile.dev
+    ports:
+      - "8090:80"
+    environment:
+      SERVER_NAME:                ":80"
+      MERCURE_PUBLISHER_JWT_KEY:  "${MERCURE_PUBLISHER_JWT_KEY}"
+      MERCURE_SUBSCRIBER_JWT_KEY: "${MERCURE_SUBSCRIBER_JWT_KEY}"
+    volumes:
+      - austral-sandbox_caddy-data:/data
+      - austral-sandbox_caddy-config:/config
+
+volumes:
+  austral-sandbox_pgsql-database:
+  austral-sandbox_caddy-data:
+  austral-sandbox_caddy-config:

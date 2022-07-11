@@ -1,0 +1,31 @@
+{# ##### Exemple definition image
+
+{% set image = {
+  src: austral_image_url(currentPage.object, {fieldName: "image"}, {mode: 'i', crop: 'mobile', width:389, height:281} ),
+  alt: "",
+  loading: "lazy",
+  otherSize = [
+    {
+      media: "(min-width: 1025px)",
+      srcset: austral_image_url(currentPage.object, {fieldName: "image"}, {mode: 'i', crop: 'master', width:389, height:281})
+    },
+    {
+      media: "(min-width: 600px)",
+      srcset: austral_image_url(currentPage.object, {fieldName: "image"}, {mode: 'i', crop: 'tablet', width:832, height:619})
+    }
+  ]
+} %}
+#}
+
+<div class="content-picture{{ (image.class|default(null)) ? " "~image.class }}"
+{%- if image.data is defined and image.data is iterable -%}
+      {%- for key, value in image.data %} {{ key }}="{{ value }}" {% endfor -%}
+    {%- endif -%}
+>
+  <picture class="picture-element">
+    {% for otherSize in image.otherSize|default([]) %}
+      <source media="{{ otherSize.media }}" srcset="{{ otherSize.srcset }}">
+    {% endfor %}
+    <img src="{{ image.src }}" alt="{{ image.alt }}"{% if image.cssStyle|default(null) and image.cssStyle|default(null) is iterable %} style="{%- for key, value in image.cssStyle %}{{ key }}:{{ value }};{% endfor -%}" {% endif%} {{- (image.loading is not defined) ? ' loading="lazy"' : ((image.loading is not null) ? ' loading='~image.loading) }} class="picture"{{ (image.class|default(null)) ? " "~image.class }}>
+  </picture>
+</div>

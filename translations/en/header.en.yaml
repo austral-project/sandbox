@@ -1,0 +1,5 @@
+user:
+  pop:
+    profil:   Profil
+    admin:    Admin
+    logout:   Logout

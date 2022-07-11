@@ -1,0 +1,53 @@
+{
+    "devDependencies": {
+        "@symfony/webpack-encore": "^0.32.0",
+        "autoprefixer": "^10.4.2",
+        "core-js": "^3.23.4",
+        "js-beautify": "^1.14.0",
+        "less-loader": "^6.2.0",
+        "postcss-loader": "^3.0.0",
+        "regenerator-runtime": "^0.13.2",
+        "sass": "^1.45.1",
+        "sass-loader": "^9.0.1",
+        "stimulus": "^2.0.0",
+        "webpack-notifier": "^1.15.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "@babel/core": "^7.16.5",
+        "@popperjs/core": "^2.11.0",
+        "@squoosh/lib": "^0.4.0",
+        "@vivid-web/flexboxgrid-sass": "^5.0.4",
+        "animate.css": "^4.1.1",
+        "autosize": "^4.0.2",
+        "babel-polyfill": "^6.26.0",
+        "choices.js": "^9.1.0",
+        "codemirror": "^5.65.0",
+        "event-source-polyfill": "^1.0.25",
+        "gsap": "^3.9.0",
+        "net": "^1.0.2",
+        "popper.js": "^1.16.1",
+        "sweetalert2": "^10.16.9",
+        "uuid": "^8.3.2"
+    },
+    "browserslist": [
+        "> 0.5%",
+        "last 2 versions",
+        "IE >= 11",
+        "Edge >= 16",
+        "Chrome >= 60",
+        "Firefox >= 50",
+        "Firefox ESR",
+        "Safari >= 10",
+        "ios_saf >= 10",
+        "Android >= 5",
+        "not dead"
+    ]
+}

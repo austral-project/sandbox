@@ -1,0 +1,11 @@
+{% set balise = component.balise|default("div") %}
+{% set isComponentUseCol = (componentUseCol is defined and componentUseCol) or componentUseCol is not defined %}
+{% block before %}{% endblock %}
+<{{ balise }}{% if component.id is defined %} id="{{ component.id }}"{% endif %} class="block block-{{ component.name|default('undefined') }} theme-{{ component.theme|default('default') }} option-{{ component.option|default('undefined') }} {{- (component.class is defined)? ' '~component.class:'' -}} ">
+  <div class="content-block-{{ component.name|default('undefined') }}">
+    {% block content %}
+
+    {% endblock %}
+  </div>
+</{{ balise }}>
+{% block after %}{% endblock %}

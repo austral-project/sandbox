@@ -1,0 +1,36 @@
+date:
+  format:
+    YMD:                              "Y-m-d"
+    YMD_HI:                           "Y-m-d H:i"
+
+
+actions:
+  button:
+    authenticated:                      Connexion
+    save:                               Save
+    send:                               Save
+    all:
+      projects:                         All projects
+      bugs:                             All bugs
+
+
+page:
+  index:
+    title:
+      projects:                         My projects
+      bugs:                             Last bugs
+
+
+sweetAlert:
+  confirm:
+    title:                              Are you sure ?
+    message:                            You won't be able to revert this !
+    actions:
+      confirm:                          Yes, delete it !
+      cancel:                           Cancel
+
+cropper:
+  title:                              Crop your image
+  actions:
+    save:                             Save
+    cancel:                           Cancel

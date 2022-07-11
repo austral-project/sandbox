@@ -1,0 +1,18 @@
+<title>{{ seo.title|default("%site.name%") }}</title>
+
+<meta name="description" content="{{ seo.description|default("%site.name%") }}"/>
+<meta name="robots" content="{{ robots.index is defined and robots.index ? "index" : "noindex"}}, {{ robots.follow is defined and robots.follow ? "follow" : "nofollow"}}">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="blue">
+
+<link rel="shortcut icon" href="%site.favicon%" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+
+    

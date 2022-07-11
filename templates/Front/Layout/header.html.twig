@@ -1,0 +1,22 @@
+<header class="header-master">
+  <div class="width-container margin-auto">
+    <div class="grid">
+      <div class="row">
+        <div class="col col--xs-12">
+          <div class="header-content">
+            <div class="logo-content">
+              <a href="{{ path('austral_website_homepage') }}" class="link" data-click-actions="reload" data-reload-elements-key="container">
+                <img src="{{ asset('bundles/australadmin/images/logo-with-text.svg') }}" alt="Yipikai Studio - Status"/>
+              </a>
+            </div>
+            <div class="header-menuMaster">
+              {% if libraries["header-menu"] is defined %}
+                {%  include libraries["header-menu"].templatePath ?? "Front/Libraries/default.html.twig" with {library: libraries["header-menu"]} %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

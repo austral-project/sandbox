@@ -1,0 +1,6 @@
+.env
+supervisord.conf
+###> system ###
+.DS_Store
+._*
+###< system ###

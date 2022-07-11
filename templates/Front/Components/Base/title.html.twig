@@ -1,0 +1,24 @@
+{# ##### Exemple definition title
+
+{% set title = {
+  level: 2 [optionnel],
+  levelStyle: (span,1,2,3,4,5,6) [optionnel],
+  trail: (false|true) [optionnel],
+  text: (string)
+} %}
+#}
+{% set titleLevelDefault = titleLevelDefault|default('2') %}
+{% set tagLevel = (title.tag|default(titleLevelDefault))|replace({'h':''}) %}
+{% set balise = ((title.tag|default(titleLevelDefault)) == "span") ? "span" : "h"~(tagLevel) %}
+{% set titleClass = "title title-"~title.tagStyle|default(tagLevel) %}
+{% set titleClassInBalise = (titleClassInBalise is defined)?titleClassInBalise:true  %}
+{% if isDefault is not defined or (isDefault is defined and not isDefault) %}
+  {% set isDefault = ("default" in (title.classCss|default(null))) ? true : false %}
+{% endif %}
+<div class="title-container title-{{ title.tagStyle|default(tagLevel) }}-container{{ (class|default(null)) ? " "~class }}{{ (title.classCss|default(null)) ? " "~title.classCss }}">
+  <{{ balise }} class="title-element {{ (titleClassInBalise)?titleClass }}{% if trail|default(false) %} color-trail{% endif %}{{ isDefault|default(null) ? " default" }}">
+    {% block before %}{% endblock %}
+    {% block content %}<span class="{{ (not titleClassInBalise)?titleClass }}">{{ title.value|raw }}</span>{% endblock %}
+    {% block after %}{% endblock %}
+  </{{ balise }}>
+</div>

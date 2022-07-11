@@ -1,0 +1,17 @@
+<footer class="footer-master">
+  <div class="width-container margin-auto">
+    <div class="grid">
+      <div class="row">
+        <div class="col col--xs-12">
+          <div class="footer-content">
+            <div class="footer-menuMaster">
+              {% if libraries["footer-menu"] is defined %}
+                {%  include libraries["footer-menu"].templatePath ?? "Front/Libraries/default.html.twig" with {library: libraries["footer-menu"]} %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,8 @@
+<li class="menu-item{{ component.theme|default()? " "~component.theme }}">
+  {% set currentPageKeyMatch = currentPage.classname|default()~":"~currentPage.id|default() %}
+  {% set linkObject = component.values.link.link %}
+  <a {% if linkObject.target != "_blank" %}data-click-actions="reload" data-reload-elements-key="container"{% endif%} href="{{ linkObject.url }}{{ (linkObject.anchor)? "#"~linkObject.anchor }}"{% if linkObject.target|default() %} target="{{ linkObject.target }}"{% if linkObject.target == "_blank" %} rel="noopener"{% endif%}{% endif%} class="menu-item-link{{ (currentPageKeyMatch in linkObject.url)? " current" }}">
+    {% if component.values.picto is defined %}<span class="picto {{ component.values.picto.value }} mr5"></span>{% endif %}
+    {{- component.values.link.value -}}
+  </a>
+</li>

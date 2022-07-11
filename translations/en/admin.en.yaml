@@ -1,0 +1,174 @@
+errors:
+  500:                      Erreur 500, please contact developer.
+
+actions:
+  label:                    Actions
+  button:
+    create:                 "Create a new element"
+    return:                 "Return"
+
+list:
+  default:
+    noResult:               No result
+
+dashboard:
+  meta:
+    title:                  Dashboard
+    description:            Dashboard
+  title:                    Dashboard
+
+bug:
+  delete:
+    success:                The bug %name% is delete successfully
+  meta:
+    list:
+      title:                Bugs list
+      description:          Bugs list
+    edit:
+      title:                Bug edit "%toString%"
+      description:          Bug edit "%toString%"
+    create:
+      title:                Bug create
+      description:          Bug create
+  title:
+    name:                   Bugs
+    list:                   Bugs list
+  actions:
+    create:
+      label:                Create a new bug
+    edit:
+      label:                Edit this bug
+    delete:
+      label:                Delete this bug
+      confirm:
+        title:              Are you sure to delete "%name%" ?
+  noResult:                 There has not bug
+  fields:
+    title:
+      label:                Title
+    user:
+      label:                Creator
+    project:
+      label:                Project|Projects
+    date:
+      label:                Date reporting
+    severity:
+      label:                Severity
+    updated:
+      label:                Updated
+
+client:
+  delete:
+    success:                The client %name% is delete successfully
+  meta:
+    list:
+      title:                Clients list
+      description:          Clients list
+    edit:
+      title:                Client edit "%toString%"
+      description:          Client edit "%toString%"
+    create:
+      title:                Client create
+      description:          Client create
+  title:
+    name:                   Clients
+    list:                   Clients list
+  actions:
+    create:
+      label:                Create a new client
+    edit:
+      label:                Edit this client
+    delete:
+      label:                Delete this client
+      confirm:
+        title:              Are you sure to delete "%name%" ?
+  noResult:                 There has not client
+  fields:
+    image:
+      label:                Logo
+    name:
+      label:                Name
+    tma:
+      label:                TMA
+    projects:
+      label:                Projects
+    updated:
+      label:                Updated
+
+project:
+  delete:
+    success:                The project %name% is delete successfully
+  meta:
+    list:
+      title:                Projects list
+      description:          Projects list
+    edit:
+      title:                Project edit "%toString%"
+      description:          Project edit "%toString%"
+    create:
+      title:                Project create
+      description:          Project create
+  title:
+    name:                   Projects
+    list:                   Projects list
+  actions:
+    create:
+      label:                Create a new projects
+    edit:
+      label:                Edit this projects
+    delete:
+      label:                Delete this projects
+      confirm:
+        title:              Are you sure to delete "%name%" ?
+  noResult:                 There has not projects
+  fields:
+    image:
+      label:                Logo
+    name:
+      label:                Name
+    client:
+      label:                Client
+    user:
+      label:                Creator
+    updated:
+      label:                Updated
+
+user:
+  delete:
+    success:                The user %name% is delete successfully
+  meta:
+    list:
+      title:                Users list
+      description:          Users list
+    edit:
+      title:                User edit "%toString%"
+      description:          User edit "%toString%"
+    create:
+      title:                User create
+      description:          User create
+  title:
+    name:                   Users
+    list:                   Users list
+  actions:
+    create:
+      label:                Create a new user
+    edit:
+      label:                Edit this user
+    delete:
+      label:                Delete this user
+      confirm:
+        title:              Are you sure to delete "%name%" ?
+  noResult:                 There has not user
+  fields:
+    avatar:
+      label:                Avatar
+    lastname:
+      label:                Lastname
+    firstname:
+      label:                Firstname
+    email:
+      label:                Email
+    role:
+      label:                Role
+    updated:
+      label:                Updated

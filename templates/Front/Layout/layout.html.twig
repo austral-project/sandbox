@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" dir="ltr" lang="fr-FR">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" dir="ltr" lang="fr-FR">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" dir="ltr" lang="fr-FR">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]>
+<html lang="fr">
+<![endif]-->
+{% apply spaceless %}
+  <head>
+
+  {% block content_head_meta %}
+      {% include 'Front/Layout/head.html.twig' %}
+    {% endblock %}
+
+    {% block content_head_stylesheets_generique %}
+      {% block stylesheets %}
+        {{ encore_entry_link_tags('front') }}
+      {% endblock %}
+    {% endblock %}
+    {% block content_stylesheets_top %}{% endblock %}
+
+    {% if mercure.url is defined %}
+      <script type="application/javascript">
+        const mercureUrl = new URL('{{ mercure.url }}');
+        {% for topic in mercure.subscribes %}
+          mercureUrl.searchParams.append('topic', "{{ topic }}");
+        {% endfor %}
+      </script>
+    {% endif %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+{% endapply %}
+{% apply spaceless %}
+  <body class="{% block body_class %}{% endblock %} {{ currentPage.keyname ?? null }}{{ currentPage.isHomepage|default(false)? " is-homepage" }} type-{{ currentPage.getSnakeClassname() ?? null }}" data-reload-elements="{{ data_reload_js|json_encode }}" data-uri="{{ app.request.uri }}">
+    {% block header %}
+      {% include 'Front/Layout/header.html.twig' %}
+    {% endblock %}
+    <div class="main-footer-content">
+      <main class="main-content animate-page" role="main">
+        {% block content_body_side %}{% endblock %}
+      </main>
+      {% block footer %}
+        {% include 'Front/Layout/footer.html.twig' %}
+      {% endblock %}
+    </div>
+    {% block after_body%}{% endblock %}
+    {% block content_javascripts_generique %}
+      {{ encore_entry_script_tags('front') }}
+    {% endblock %}
+    {% block content_script_js_bottom %}{% endblock %}
+  </body>
+{% endapply %}
+</html>

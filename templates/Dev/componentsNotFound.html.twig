@@ -1,0 +1,32 @@
+{% set component = (component|default({}))|merge({
+  name : "DEV - MODE"
+}) %}
+{% extends "Front/Components/Base/component-skeleton.html.twig" %}
+
+{% block content %}
+  {% if isComponentUseCol %}
+    <div class="width-container margin-auto">
+      <div class="grid">
+        <div class="row">
+          <div class="col col--xs-12">
+  {% endif %}
+
+  <div class="create-template-msg">
+    Create template in : {{ component.templatePath }}
+  </div>
+
+  {% if component is defined %}
+    {{ dump(component) }}
+  {% endif %}
+
+  {% if library is defined %}
+    {{ dump(library) }}
+  {% endif %}
+
+  {% if isComponentUseCol %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

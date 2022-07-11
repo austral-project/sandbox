@@ -1,0 +1,22 @@
+{% set component = (component|default({}))|merge({
+  name : "title"
+}) %}
+{% extends "Front/Components/Base/component-skeleton.html.twig" %}
+
+{% block content %}
+  {% if isComponentUseCol %}
+  <div class="width-container margin-auto">
+    <div class="grid">
+      <div class="row">
+        <div class="col col--xs-12">
+  {% endif %}
+          {% include "Front/Components/Base/title.html.twig" with {
+            title: component.values.title|default({}),
+          } %}
+  {% if isComponentUseCol %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}

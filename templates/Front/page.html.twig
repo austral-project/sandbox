@@ -1,0 +1,34 @@
+{% extends 'Front/Layout/layout.html.twig' %}
+{% block body_class %}{% endblock %}
+
+{% block content_body_side %}
+
+  <div class="content-bandeau-top">
+    <div class="width-container margin-auto">
+      <div class="grid">
+        <div class="row">
+          <div class="col col--xs-12">
+            <h1 class="title-1">{{ currentPage.refH1 ? : currentPage.__toString() }}</h1>
+            <p>{{ currentPage.summary }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if currentPage.componentsTemplate()["master"] is defined %}
+    {% for containerComponent in currentPage.componentsTemplate()["master"] %}
+      <div class="container theme-{{ containerComponent.keyname }}">
+        {% for component in containerComponent.children %}
+          {% if component.type == "library" %}
+            {% if libraries[component.keyname] is defined %}
+              {%  include libraries[component.keyname].templatePath ?? "Front/Libraries/default.html.twig" with {library: libraries[component.keyname]} %}
+            {% endif %}
+          {% else %}
+            {% include [component.templatePath, "Dev/componentsNotFound.html.twig"] %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

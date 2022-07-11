@@ -1,0 +1,18 @@
+{% extends "Front/Libraries/Base/library-skeleton.html.twig" %}
+{% block content %}
+
+  {% for containerComponent in library.componentsTemplate %}
+    {% for component in containerComponent.children %}
+
+      {% if component.type == "library" %}
+        {% if libraries[component.keyname] is defined %}
+          {%  include libraries[component.keyname].templatePath ?? "Front/Libraries/default.html.twig" with {library: libraries[component.keyname]} %}
+        {% endif %}
+      {% else %}
+        {% include [component.templatePath, "Dev/componentsNotFound.html.twig"] %}
+      {% endif %}
+
+    {% endfor %}
+  {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% set component = (component|default({}))|merge({
+  name : "picture"
+}) %}
+{% extends "Front/Components/Base/component-skeleton.html.twig" %}
+
+{% block content %}
+
+  <div class="width-container margin-auto">
+    <div class="grid">
+      <div class="row">
+        <div class="col col--xs-12">
+          {% include "Front/Components/Base/picture.html.twig" with {
+            image: {
+              cssStyle: cssStyleValue|default(null),
+              src: component.values.image|austral_entity_file_image_url("image", "", null, 940, null, {"webp": 1}),
+              alt: component.values.image.options.alt|default(null),
+              otherSize: [
+                {
+                  media: "(min-width: 1025px)",
+                  srcset: component.values.image|austral_entity_file_image_url("image", "", null, 1260, null, {"webp": 1})
+                },
+                {
+                  media: "(min-width: 600px)",
+                  srcset: component.values.image|austral_entity_file_image_url("image", "", null, 1260, null, {"webp": 1})
+                }
+              ],
+              data: {
+                "data-scroll-animate": "",
+                "data-type-animate":   "default",
+              },
+            }
+          } %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

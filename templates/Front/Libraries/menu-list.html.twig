@@ -1,0 +1,20 @@
+{% extends "Front/Libraries/Base/library-skeleton.html.twig" %}
+{% block content %}
+  <nav class="navigation-container {{ library.keyname|default() }}">
+    <ul class="menu-list">
+      {% for containerComponent in library.componentsTemplate["master"] %}
+        {% for component in containerComponent.children %}
+          {% if component.keyname == "navigation-link" %}
+            {% if component.option == "authenticated" %}
+              {% if user.isAuthenticated == true %}
+                {%  include [component.templatePath, "Dev/componentsNotFound.html.twig"] %}
+              {% endif %}
+            {% else %}
+              {%  include [component.templatePath, "Dev/componentsNotFound.html.twig"] %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  </nav>
+{% endblock %}

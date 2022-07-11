@@ -1,0 +1,25 @@
+austral_website:
+  templates:
+    default:
+      path:                     "Front/page.html.twig"
+    homepage:
+      path:                     "Front/homepage.html.twig"
+    comingSoon:
+      path:                     "Front/comingSoon.html.twig"
+
+austral_entity_file:
+  compression:
+    command:                    "/usr/local/bin/squoosh-cli"
+    options:
+      webp:
+        quality:                70
+      mozjpeg:
+        quality:                70
+      oxipng:
+        level:                  1
+  cropper:
+    desktop:
+      name:                     "Toto"
+      ratio:                    16 / 9
+    tablet:
+      ratio:                    3 / 4
