@@ -88,6 +88,7 @@
       "php bin/console doctrine:schema:update --force",
       "php bin/console austral:security:user --email=${ADMIN_EMAIL:=support@austral.dev} --username=${ADMIN_USERNAME:=admin} --password=${ADMIN_PASSWORD:=admin} --create --root --if-not-exist",
       "php bin/console austral:admin:roles --generate",
+      "php bin/console austral:generate:initialise",
       "npm install",
       "npm run build"
     ],
