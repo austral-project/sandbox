@@ -23,6 +23,12 @@ cp deploy/.env.dist deploy/.env
 cp deploy/supervisord.conf.dist deploy/supervisord.conf
 ```
 
+__Install composer__
+```bash
+cp deploy
+docker-compose run php composer install
+```
+
 __Start Docker__
 ```bash
 cp deploy
