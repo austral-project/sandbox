@@ -24,9 +24,7 @@
 /public/thumbnail/
 /tmp/
 /symfony.lock
-/composer.lock
 /package-lock.json
-/composer.json
 ###< project ###
 
 ###> symfony/phpunit-bridge ###
